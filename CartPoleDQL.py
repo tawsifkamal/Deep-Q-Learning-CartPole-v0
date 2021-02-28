@@ -5,7 +5,7 @@ import numpy as np
 import random
 import torch.nn.functional as F 
 import torch.optim as optim
-import gym
+from custom_cartpole_env import CartPoleEnv
 from collections import namedtuple, deque
 
 # Defining the Neural Network 
@@ -87,8 +87,7 @@ def get_action(input, model, epsilon, env):
 
 
 # defining the environment
-env = gym.make('CartPole-v1')
-
+env = CartPoleEnv()
 # Defining the hyper-paramaters     
 epsilon = 1
 max_exploration_rate = 1
@@ -125,8 +124,8 @@ for episode in range(1000):
 
     #Iterating through time_steps in current episode 
     while not done:
-        # if True:
-        #     env.render()
+        if True:
+            env.render()
 
         steps_until_traning+=1
         action = get_action(state, policy_net, epsilon, env)
