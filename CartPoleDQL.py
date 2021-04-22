@@ -52,7 +52,7 @@ class Memory(object):
 def train_model(policy_net, target_net, optimizer, batch):
     # Extracting states, next_states, actions, rewards, and done variable in current batch
     states = torch.stack(batch.state) 
-    next_states = torch.stack(batch.next_state) # 
+    next_states = torch.stack(batch.next_state)  
     actions = torch.Tensor(batch.action).float().to(device) 
     rewards = torch.Tensor(batch.reward).to(device)
     terminals = torch.Tensor(batch.terminal).to(device)
